@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Http, Headers } from '@angular/http';
 import {map} from 'rxjs/operators';
+import { JwtHelperService } from '@auth0/angular-jwt';
 
 @Injectable({
   providedIn: 'root'
@@ -47,10 +48,24 @@ export class AuthService {
    this.authToken = token;
  }
 
+loggedIn() {
+   const helper = new JwtHelperService();
+   return !helper.isTokenExpired(this.authToken);
+  }
+
  logout() {
    this.authToken = null;
    this.user = null;
    localStorage.clear();
  }
+
+ isAdmin() {
+  if (this.user.permission === 'admin') {
+    return true;
+
+  } else {
+    return false;
+  }
+  }
 
 }

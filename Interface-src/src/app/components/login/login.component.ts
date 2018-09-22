@@ -37,7 +37,7 @@ export class LoginComponent implements OnInit {
           timeout: 3000,
           type: 'success'
         });
-        this.router.navigate(['/dashboard']);
+        this.router.navigate(['/calendar']);
       } else {
         this.flashMessage.showFlashMessage({
           messages: ['Something went wrong'],

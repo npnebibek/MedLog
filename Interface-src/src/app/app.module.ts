@@ -16,14 +16,29 @@ import { NgFlashMessagesModule } from 'ng-flash-messages';
 import { AuthService } from './services/auth.service';
 import { HttpClientModule } from '@angular/common/http';
 import { HttpModule } from '@angular/http';
+import { AuthGuard} from './guards/auth.guard';
+import { CalendarComponent } from './components/calendar/calendar.component';
+import { MessagesComponent } from './components/messages/messages.component';
+import { PatientComponent } from './components/patient/patient.component';
+import { AdministrationComponent } from './components/administration/administration.component';
+import { ReportsComponent } from './components/reports/reports.component';
+import { AboutComponent } from './components/about/about.component';
+
+
 
 const appRoutes: Routes = [
   {path: '', component: HomeComponent},
   {path: 'register', component: RegisterComponent},
   {path: 'login', component: LoginComponent},
   { path: 'navbar', component: NavbarComponent},
-  { path: 'profile', component: ProfileComponent},
-  { path: 'dashboard', component: DashboardComponent}
+  { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard]},
+  { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard]},
+  { path: 'calendar', component: CalendarComponent, canActivate: [AuthGuard]},
+  { path: 'patient', component: PatientComponent, canActivate: [AuthGuard]},
+  { path: 'administration', component: AdministrationComponent, canActivate: [AuthGuard]},
+  { path: 'reports', component: ReportsComponent, canActivate: [AuthGuard]},
+  { path: 'about', component: AboutComponent, canActivate: [AuthGuard]},
+  { path: 'messages', component: MessagesComponent, canActivate: [AuthGuard]}
 
 ];
 
@@ -35,7 +50,13 @@ const appRoutes: Routes = [
     HomeComponent,
     LoginComponent,
     ProfileComponent,
-    RegisterComponent
+    RegisterComponent,
+    CalendarComponent,
+    MessagesComponent,
+    PatientComponent,
+    AdministrationComponent,
+    ReportsComponent,
+    AboutComponent
   ],
   imports: [
     BrowserModule,
@@ -45,7 +66,7 @@ const appRoutes: Routes = [
     HttpClientModule,
     HttpModule
     ],
-  providers: [ValidateService, AuthService],
+  providers: [ValidateService, AuthService, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
