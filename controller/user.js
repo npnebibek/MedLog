@@ -84,7 +84,6 @@ module.exports = {
     },
 
   getUser: (req, res) => {
-    const { userId } = req.params;
     User.findById(userId, (err, user) => {
       if (err) throw err;
       if (!user) {
