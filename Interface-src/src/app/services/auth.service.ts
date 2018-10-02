@@ -27,6 +27,15 @@ export class AuthService {
 
   }
 
+  getAllUsers() {
+    const headers = new Headers();
+    this.loadToken();
+    headers.append('Authorization', this.authToken);
+    headers.append('Content-Type', 'application/json');
+    return this.http.get('http://localhost:3000/users/index', {headers: headers})
+    .pipe(map(res => res.json()));
+  }
+
   getProfile() {
     const headers = new Headers();
     this.loadToken();
