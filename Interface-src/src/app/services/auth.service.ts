@@ -28,6 +28,12 @@ export class AuthService {
 
   }
 
+  findUser(userId: String) {
+    const headers = new Headers();
+    return this.http.get('http://localhost:3000/users/' + userId, {headers: headers})
+    .pipe(map(res => res.json()));
+  }
+
   getAllUsers() {
     const headers = new Headers();
     this.loadToken();

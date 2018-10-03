@@ -11,15 +11,21 @@ import { Observable } from 'rxjs';
 
 
 export class AdministrationComponent implements OnInit {
-  users$: Object;
+  users: Object;
+  userId: String;
 
   constructor(
     private authService: AuthService
   ) { }
 
   ngOnInit() {
-    this.authService.getAllUsers().subscribe(authService =>
-     this.users$ = authService);
+    // this.authService.getAllUsers().subscribe(authService =>
+    // this.users$ = authService);
+    }
+
+  onSearch() {
+    this.authService.findUser(this.userId).subscribe(data =>
+    this.users = data.user);
     }
 
 }

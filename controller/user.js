@@ -80,11 +80,15 @@ module.exports = {
 
   
   getProfile:  (req,res,next) => {
-      res.json({user:req.user});
-    },
+    res.json({user:req.user});
+ 
+  },
 
-  getUser: (req, res) => {
+  getUser: (req, res) => {  
+    const { userId } = req.params;
+    
     User.findById(userId, (err, user) => {
+      console.log(user.username);
       if (err) throw err;
       if (!user) {
         return res.json({ sucess: false, msg: 'User not found' });

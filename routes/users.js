@@ -14,7 +14,7 @@ router.route('/authenticate')
     .post(UserController.authenticateUser);
 
 router.route('/profile')
-    .get(UserController.getUser);
+    .get(passport.authenticate('jwt', { session: false }),UserController.getProfile);
 
 router.route('/:userId')
     .get(UserController.getUser);
