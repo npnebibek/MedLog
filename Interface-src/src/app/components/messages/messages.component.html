@@ -1,3 +1,18 @@
-<p>
-  messages works!
-</p>
+<br />
+<a class="btn btn-primary" [routerLink]="['/writeMessage']">Write Memo</a>
+<br />
+<br />
+<h2>Memo by users</h2>
+<br />
+<br />
+<div *ngFor= "let message of messages">
+    <div class="jumbotron">
+    <ul class="list-group">
+        <li class="list-group-item">Date: {{message.date}}</li>
+      <li class="list-group-item">Memo: {{message.note}}</li>
+      
+      </ul>
+    </div>
+    <br />
+    </div>
+    

@@ -1,3 +1,17 @@
-<p>
-  patient works!
-</p>
+<h2>List of All Registered Patients</h2>
+<br/>
+<div *ngFor= "let patient of patients">
+    <div class="jumbotron">
+    <h2 class="page-header">{{patient.name}}</h2>
+    <ul class="list-group">
+      <li class="list-group-item">DOB: {{patient.dateOfBirth}}</li>
+      <li class="list-group-item">Sex: {{patient.sex}}</li>
+      <li class="list-group-item">Email: {{patient.email}}</li>
+      <li class="list-group-item">LicenseId: {{patient.licenseId}}</li>
+      <li class="list-group-item">Contact: {{patient.contact}}</li>
+      </ul>
+    </div>
+    <br />
+    </div>
+    
+      

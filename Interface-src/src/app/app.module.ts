@@ -8,7 +8,6 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
-import { ProfileComponent } from './components/profile/profile.component';
 import { RegisterComponent } from './components/register/register.component';
 
 import { ValidateService } from './services/validate.service';
@@ -22,23 +21,31 @@ import { MessagesComponent } from './components/messages/messages.component';
 import { PatientComponent } from './components/patient/patient.component';
 import { AdministrationComponent } from './components/administration/administration.component';
 import { ReportsComponent } from './components/reports/reports.component';
-import { AboutComponent } from './components/about/about.component';
+import { JwtHelperService } from '@auth0/angular-jwt';
+import { AllUsersComponent } from './components/all-users/all-users.component';
+import { WriteMessageComponent } from './components/write-message/write-message.component';
+import { NewPatientComponent } from './components/new-patient/new-patient.component';
+import { NewAppointmentComponent } from './components/new-appointment/new-appointment.component';
+import { AllReportsComponent } from './components/all-reports/all-reports.component';
 
 
 
 const appRoutes: Routes = [
-  {path: '', component: HomeComponent},
+  {path: '', component: LoginComponent},
+  {path: 'allUsers', component: AllUsersComponent},
   {path: 'register', component: RegisterComponent},
   {path: 'login', component: LoginComponent},
   { path: 'navbar', component: NavbarComponent},
-  { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard]},
   { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard]},
   { path: 'calendar', component: CalendarComponent, canActivate: [AuthGuard]},
   { path: 'patient', component: PatientComponent, canActivate: [AuthGuard]},
   { path: 'administration', component: AdministrationComponent, canActivate: [AuthGuard]},
   { path: 'reports', component: ReportsComponent, canActivate: [AuthGuard]},
-  { path: 'about', component: AboutComponent, canActivate: [AuthGuard]},
-  { path: 'messages', component: MessagesComponent, canActivate: [AuthGuard]}
+  { path: 'messages', component: MessagesComponent, canActivate: [AuthGuard]},
+  { path: 'writeMessage', component: WriteMessageComponent, canActivate: [AuthGuard]},
+  { path: 'newPatient', component: NewPatientComponent, canActivate: [AuthGuard]},
+  { path: 'newAppointment', component: NewAppointmentComponent, canActivate: [AuthGuard]},
+  { path: 'allReports', component: AllReportsComponent, canActivate: [AuthGuard]}
 
 ];
 
@@ -49,14 +56,17 @@ const appRoutes: Routes = [
     DashboardComponent,
     HomeComponent,
     LoginComponent,
-    ProfileComponent,
     RegisterComponent,
     CalendarComponent,
     MessagesComponent,
     PatientComponent,
     AdministrationComponent,
     ReportsComponent,
-    AboutComponent
+    AllUsersComponent,
+    WriteMessageComponent,
+    NewPatientComponent,
+    NewAppointmentComponent,
+    AllReportsComponent
   ],
   imports: [
     BrowserModule,
@@ -66,7 +76,7 @@ const appRoutes: Routes = [
     HttpClientModule,
     HttpModule
     ],
-  providers: [ValidateService, AuthService, AuthGuard],
+  providers: [ValidateService, AuthService, AuthGuard, JwtHelperService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

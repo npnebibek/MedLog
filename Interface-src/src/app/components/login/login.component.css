@@ -1,0 +1,81 @@
+        .head
+        {
+            padding: 0;
+            margin: 0;
+            margin-top: 80px;
+            width: 100%;
+            height: 100%;
+            font-family: "Helvetica Neue" , Helvetica, sans-serif;
+            background: #FFFFFF;
+            background-image: url("../../../assets/logo.png");
+            background-repeat: no-repeat;
+            background-position: top;
+        }
+
+        .logincontent
+        {
+            position: fixed;
+            width: 350px;
+            height: 300px;
+            top: 50%;
+            left: 50%;
+            margin-top: -150px;
+            margin-left: -175px;
+            background: #07A8C3;
+            padding-top: 10px;
+            
+            
+        }
+        .loginheading
+        {
+            text-align: center;
+            border-bottom: solid 1px #ECF2F5;
+            padding-left: 18px;
+            padding-bottom: 10px;
+            color: #ffffff;
+            font-size: 20px;
+            font-weight: bold;
+            font-family: sans-serif;
+            
+        }
+        label
+        {
+            color: #ffffff;
+            display: inline-block;
+            margin-left: 18px;
+            padding-top: 10px;
+            font-size: 15px;
+        }
+        input[type=text], input[type=password]
+        {
+            font-size: 14px;
+            padding-left: 10px;
+            margin: 10px;
+            margin-top: 12px;
+            margin-left: 18px;
+            width: 300px;
+            height: 35px;
+            border: 2px solid #ccc;
+            border-radius: 2px;
+            font-size: 14px;
+        }
+        .loginremember
+        {
+            text-align: center;
+            background: #c9dde8;
+            height: 80px;
+            margin-top: 20px;
+        }
+        .loginbtn
+        {
+            justify-content: center;
+            margin-top: 25px;
+            padding: 6px 20px;
+            font-size: 14px;
+            font-weight: bold;
+            color: #fff;
+            background-color: #07A8C3;
+            border-radius: 30px;
+            border: 1px solid #07A8C3;
+            cursor: pointer;
+        }

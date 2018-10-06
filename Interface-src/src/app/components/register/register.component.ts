@@ -39,7 +39,7 @@ export class RegisterComponent implements OnInit {
       this.flashMessage.showFlashMessage({
         messages: ['please fill the forms'],
         dismissible: true,
-        timeout: 3000,
+        timeout: 1000,
         type: 'danger'
       });
       return false;
@@ -49,7 +49,7 @@ export class RegisterComponent implements OnInit {
       this.flashMessage.showFlashMessage({
         messages: ['please fill the correct email address'],
         dismissible: true,
-        timeout: 3000,
+        timeout: 1000,
         type: 'danger'
       });
       return false;
@@ -59,7 +59,7 @@ export class RegisterComponent implements OnInit {
   this.authService.registerUser(user).subscribe(data => {
     if (data.success) {
       this.flashMessage.showFlashMessage({
-        messages: ['you are now registerd and sign in'],
+        messages: ['You are now registerd to sign in'],
         dismissible: true,
         timeout: 3000,
         type: 'success'

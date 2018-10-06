@@ -19,13 +19,15 @@ export class AdministrationComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    // this.authService.getAllUsers().subscribe(authService =>
-    // this.users$ = authService);
     }
 
   onSearch() {
     this.authService.findUser(this.userId).subscribe(data =>
     this.users = data.user);
+    }
+
+  onDelte() {
+    this.authService.deleteUser(this.userId).subscribe(data => {});
     }
 
 }

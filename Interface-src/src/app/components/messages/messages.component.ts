@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../../services/auth.service';
+
 
 @Component({
   selector: 'app-messages',
@@ -7,9 +9,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MessagesComponent implements OnInit {
 
-  constructor() { }
+  messages: Object;
+
+  constructor(
+    private authService: AuthService
+  ) { }
 
   ngOnInit() {
+    this.authService.getAllMessages().subscribe(authService =>
+    this.messages = authService);
+    }
   }
 
-}
+

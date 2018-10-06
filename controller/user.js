@@ -3,11 +3,16 @@ const Message = require('../models/message');
 const bcrypt = require('bcryptjs'); // bcrypt.js is a js library to hash the password before storing
 const jwt = require ('jsonwebtoken');
 const config = require ('../config/database');
-const passport = require ('passport');
 
 module.exports = {
 
-  Index: async (req, res, next) => {
+ Index: async (req, res, next) => {
+    const message = await Message.find({});
+    console.log(message);
+    res.json(message);
+  }, 
+
+  Users: async (req, res, next) => {
     const users = await User.find({});
     console.log(users);
     res.json(users);
@@ -84,7 +89,13 @@ module.exports = {
  
   },
 
-  getUser: (req, res) => {  
+  deleteUser: (req, res) => {
+    const { userId } = req.params;
+    User.findByIdAndRemove(userId);
+    console.log('deleted');
+  },
+
+  getUser: (req, res) => { 
     const { userId } = req.params;
     
     User.findById(userId, (err, user) => {
@@ -107,6 +118,8 @@ module.exports = {
     });
   },
 
+  
+
   getUserMessages: async (req,res,next) => {
     const { userId } = req.params;
     const user = await User.findById(userId).populate('message');
@@ -126,6 +139,6 @@ module.exports = {
       user.message.push(newMessage);
       //save this user
       await user.save();
-      res.json(newMessage);
+      res.json({success : true});
   }
 };

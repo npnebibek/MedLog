@@ -1,3 +1,24 @@
-<p>
-  calendar works!
-</p>
+<br />
+<a class="btn btn-primary" [routerLink]="['/newPatient']">Add New Patient</a>
+<br />
+<br />
+<a class="btn btn-primary" [routerLink]="['/newAppointment']">Add New Appointment</a>
+<br />
+<br />
+<h2>Appointments</h2>
+<form (submit)="onExamine()">
+<div *ngFor= "let appointment of appointments">
+        <div class="jumbotron">
+        <ul class="list-group">
+          <li class="list-group-item">Date: {{appointment.dateOfAppointment}}</li>
+          <li class="list-group-item">Patient: {{appointment.patient}}</li>
+          <li class="list-group-item">title: {{appointment.title}}</li>
+          <li class="list-group-item">Status: {{appointment.status}}</li>
+          <li class="list-group-item">Comment: {{appointment.comment}}</li>
+          <input *ngIf="authService.isDoctor()" class="btn btn-primary" type="submit" value="Examine">
+          </ul>
+        </div>
+        <br />
+        </div>
+        </form>
+        

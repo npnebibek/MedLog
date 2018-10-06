@@ -1,0 +1,39 @@
+<br/>
+<h2 class="page-header">Register New Appointment</h2>
+<form (submit)="onCreateAppointment()">
+  <div class="form-group">
+      <label>Date:</label>
+      <input type="date" [(ngModel)]="dateOfappointment" name="dateOfappointment" class="form-control">
+  </div>
+
+  <div class="form-group">
+      <label>Title:</label>
+      <input type="text" [(ngModel)]="title" name="title" class="form-control">
+    </div>
+
+
+    <div class="form-group">
+      <select class="form-control">
+      <option *ngFor="let patient of patients">{{patient.name}}</option>
+      </select>
+  </div>
+
+  <div class="form-group">
+    <label>patient's name:</label>
+    <input type="text" [(ngModel)]="patient" name="patient" class="form-control">
+</div>
+
+  
+<div class="form-group">
+        <label>Status:</label>
+        <input type="text" [(ngModel)]="status" name="status" class="form-control">
+      </div>
+
+    
+ <div class="form-group">
+    <label>Comment:</label>
+    <input type="text" [(ngModel)]="comment" name="comment" class="form-control">
+  </div>
+
+<input type="submit" class="btn btn-primary" value="Submit">
+</form>

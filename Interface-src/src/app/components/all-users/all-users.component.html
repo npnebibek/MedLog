@@ -1,0 +1,16 @@
+<h2>List of All Registered Users</h2>
+<br/>
+<div *ngFor= "let user of users">
+    <div class="jumbotron">
+    <h2 class="page-header">{{user.name}}</h2>
+    <ul class="list-group">
+      <li class="list-group-item">Userid: {{user._id}}</li>
+      <li class="list-group-item">Usename: {{user.username}}</li>
+      <li class="list-group-item">Email: {{user.email}}</li>
+      <li class="list-group-item">Permission: {{user.permission}}</li>
+      </ul>
+    </div>
+    <br />
+    </div>
+    
+      

@@ -21,7 +21,7 @@ const UserSchema = new Schema({
     permission:{
         type: String,
         required: true,
-        default: 'user'
+        default: 'Manager'
     },
     message: [{
         type: Schema.Types.ObjectId,

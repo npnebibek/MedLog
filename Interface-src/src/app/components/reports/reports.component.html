@@ -1,3 +1,18 @@
-<p>
-  reports works!
-</p>
+<br />
+<a class="btn btn-primary" [routerLink]="['/allReports']">View All Reports</a>
+<br />
+<form (submit) = "onWrite()">
+  <div class="form-group">
+      <h2>Report</h2>
+      <label>Doctor's Note:</label>
+      <input type="text" [(ngModel)]="docNote" name="docNote" class="form-control" size="20"/>
+      <br />
+      <br />
+      <label>Medicines:</label>
+      <input type="text" [(ngModel)]="medicineNote" name="medicineNote" class="form-control" size="20"/>
+      <br />
+      <br />
+      <input class="btn btn-primary" type="submit" value="Report"/>   
+  </div>
+  </form>
+  

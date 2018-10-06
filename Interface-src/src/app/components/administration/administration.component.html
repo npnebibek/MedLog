@@ -1,13 +1,27 @@
-<label>Username</label>
+<h2>Search All Registered Users</h2>
 <form (submit)="onSearch()">
-<input type="text"  [(ngModel)]="userId" name="userId" class="form-control">
-<input type="submit" class="btn btn-primary" value="Login">
+<input type="text"  [(ngModel)]="userId" name="userId" class="form-control" placeholder="userId">
+<br/>
+<input type="submit" class="btn btn-primary" value="Search">
+<a class="btn btn-default" [routerLink]="['/allUsers']">All Users</a>
 </form>
+<br/>
 <div *ngIf= "users">
+  
+<form (submit)="onDelte()">
+    <div class="jumbotron">
     <h2 class="page-header">{{users.name}}</h2>
     <ul class="list-group">
       <li class="list-group-item">Usename: {{users.username}}</li>
       <li class="list-group-item">Email: {{users.email}}</li>
-    </ul>
-  </div>
+      <li class="list-group-item">Permission: {{users.permission}}</li>
+      <input type="submit" class="btn btn-warning" value="Delete User">
+      </ul>
+    </div>
+    </form>
+    </div>
+
+      
+    
+  
 

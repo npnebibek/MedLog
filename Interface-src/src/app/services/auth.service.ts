@@ -9,7 +9,8 @@ import { JwtHelperService } from '@auth0/angular-jwt';
 export class AuthService {
   authToken: any;
   user: any;
-  userId: any;
+  message: any;
+  userId: String;
 
   constructor(private http: Http) { }
 
@@ -34,10 +35,23 @@ export class AuthService {
     .pipe(map(res => res.json()));
   }
 
+  deleteUser(userId: String) {
+    const headers = new Headers();
+    return this.http.delete('http://localhost:3000/users/' + userId, {headers: headers})
+    .pipe(map(res => res.json()));
+  }
+
   getAllUsers() {
     const headers = new Headers();
     this.loadToken();
     headers.append('Authorization', this.authToken);
+    headers.append('Content-Type', 'application/json');
+    return this.http.get('http://localhost:3000/users/users', {headers: headers})
+    .pipe(map(res => res.json()));
+  }
+
+  getAllMessages() {
+    const headers = new Headers();
     headers.append('Content-Type', 'application/json');
     return this.http.get('http://localhost:3000/users/index', {headers: headers})
     .pipe(map(res => res.json()));
@@ -52,21 +66,85 @@ export class AuthService {
     .pipe(map(res => res.json()));
   }
 
-  storeUserData(token, user) {
+  newMessage(message) {
+    const headers = new Headers();
+    this.getId();
+    headers.append('Content-Type', 'application/json');
+    return this.http.post('http://localhost:3000/users/' + this.userId + '/messages', message, {headers: headers})
+    .pipe(map(res => res.json()));
+  }
+
+  registerPatient(patient) {
+    const headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    return this.http.post('http://localhost:3000/users/registerPatient', patient, {headers: headers})
+    .pipe(map(res => res.json()));
+  }
+
+  newAppointment(appointment) {
+    const headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    return this.http.post('http://localhost:3000/users/newAppointment', appointment, {headers: headers})
+    .pipe(map(res => res.json()));
+  }
+
+  allAppointments () {
+    const headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    return this.http.get('http://localhost:3000/users/allAppointments', {headers: headers})
+    .pipe(map(res => res.json()));
+  }
+
+  allPatientsName () {
+    const headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    return this.http.get('http://localhost:3000/users/allPatients', {headers: headers})
+    .pipe(map(res => res.json()));
+  }
+
+  newReport (report) {
+    const headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    return this.http.post('http://localhost:3000/users/newReport', report, {headers: headers})
+    .pipe(map(res => res.json()));
+
+  }
+
+  allReports () {
+    const headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    return this.http.get('http://localhost:3000/users/allReports', {headers: headers})
+    .pipe(map(res => res.json()));
+  }
+
+
+
+  storeUserData(token, user, id) {
    localStorage.setItem('id_token', token);
    localStorage.setItem('user', JSON.stringify(user));
+   localStorage.setItem('id', id);
    this.authToken = token;
    this.user = user;
+   this.userId = id;
+ }
+
+ getId() {
+  this.userId = localStorage.getItem('id');
+  console.log(this.userId);
  }
 
  loadToken() {
    const token = localStorage.getItem('id_token');
    this.authToken = token;
+   console.log(this.authToken);
  }
 
 loggedIn() {
    const helper = new JwtHelperService();
-   return !helper.isTokenExpired(this.authToken);
+   if (!this.authToken) {
+     return false;
+     } else {
+   return !helper.isTokenExpired(this.authToken); }
   }
 
  logout() {
@@ -82,6 +160,14 @@ loggedIn() {
   } else {
     return false;
   }
+  }
+
+  isDoctor() {
+    if (this.user.permission === 'doctor') {
+      return true;
+    } else {
+      return false;
+    }
   }
 
 }
