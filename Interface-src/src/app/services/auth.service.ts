@@ -17,27 +17,27 @@ export class AuthService {
   registerUser(user) {
     const headers = new Headers();
     headers.append('Content-Type', 'application/json');
-    return this.http.post('http://localhost:3000/users/register', user, {headers: headers})
+    return this.http.post('users/register', user, {headers: headers})
     .pipe(map(res => res.json()));
   }
 
   authenticateUser(user) {
     const headers = new Headers();
     headers.append('Content-Type', 'application/json');
-    return this.http.post('http://localhost:3000/users/authenticate', user, {headers: headers})
+    return this.http.post('users/authenticate', user, {headers: headers})
     .pipe(map(res => res.json()));
 
   }
 
   findUser(userId: String) {
     const headers = new Headers();
-    return this.http.get('http://localhost:3000/users/' + userId, {headers: headers})
+    return this.http.get('users/' + userId, {headers: headers})
     .pipe(map(res => res.json()));
   }
 
   deleteUser(userId: String) {
     const headers = new Headers();
-    return this.http.delete('http://localhost:3000/users/' + userId, {headers: headers})
+    return this.http.delete('users/' + userId, {headers: headers})
     .pipe(map(res => res.json()));
   }
 
@@ -46,14 +46,14 @@ export class AuthService {
     this.loadToken();
     headers.append('Authorization', this.authToken);
     headers.append('Content-Type', 'application/json');
-    return this.http.get('http://localhost:3000/users/users', {headers: headers})
+    return this.http.get('users/users', {headers: headers})
     .pipe(map(res => res.json()));
   }
 
   getAllMessages() {
     const headers = new Headers();
     headers.append('Content-Type', 'application/json');
-    return this.http.get('http://localhost:3000/users/index', {headers: headers})
+    return this.http.get('users/index', {headers: headers})
     .pipe(map(res => res.json()));
   }
 
@@ -62,7 +62,7 @@ export class AuthService {
     this.loadToken();
     headers.append('Authorization', this.authToken);
     headers.append('Content-Type', 'application/json');
-    return this.http.get('http://localhost:3000/users/profile', {headers: headers})
+    return this.http.get('users/profile', {headers: headers})
     .pipe(map(res => res.json()));
   }
 
@@ -70,42 +70,42 @@ export class AuthService {
     const headers = new Headers();
     this.getId();
     headers.append('Content-Type', 'application/json');
-    return this.http.post('http://localhost:3000/users/' + this.userId + '/messages', message, {headers: headers})
+    return this.http.post('users/' + this.userId + '/messages', message, {headers: headers})
     .pipe(map(res => res.json()));
   }
 
   registerPatient(patient) {
     const headers = new Headers();
     headers.append('Content-Type', 'application/json');
-    return this.http.post('http://localhost:3000/users/registerPatient', patient, {headers: headers})
+    return this.http.post('users/registerPatient', patient, {headers: headers})
     .pipe(map(res => res.json()));
   }
 
   newAppointment(appointment) {
     const headers = new Headers();
     headers.append('Content-Type', 'application/json');
-    return this.http.post('http://localhost:3000/users/newAppointment', appointment, {headers: headers})
+    return this.http.post('users/newAppointment', appointment, {headers: headers})
     .pipe(map(res => res.json()));
   }
 
   allAppointments () {
     const headers = new Headers();
     headers.append('Content-Type', 'application/json');
-    return this.http.get('http://localhost:3000/users/allAppointments', {headers: headers})
+    return this.http.get('users/allAppointments', {headers: headers})
     .pipe(map(res => res.json()));
   }
 
   allPatientsName () {
     const headers = new Headers();
     headers.append('Content-Type', 'application/json');
-    return this.http.get('http://localhost:3000/users/allPatients', {headers: headers})
+    return this.http.get('users/allPatients', {headers: headers})
     .pipe(map(res => res.json()));
   }
 
   newReport (report) {
     const headers = new Headers();
     headers.append('Content-Type', 'application/json');
-    return this.http.post('http://localhost:3000/users/newReport', report, {headers: headers})
+    return this.http.post('users/newReport', report, {headers: headers})
     .pipe(map(res => res.json()));
 
   }
@@ -113,7 +113,7 @@ export class AuthService {
   allReports () {
     const headers = new Headers();
     headers.append('Content-Type', 'application/json');
-    return this.http.get('http://localhost:3000/users/allReports', {headers: headers})
+    return this.http.get('users/allReports', {headers: headers})
     .pipe(map(res => res.json()));
   }
 
