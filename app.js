@@ -11,7 +11,7 @@ mongoose.connect(config.database);
 
 //database is on
 mongoose.connection.on('connected', ()=>{
-    console.log('databse is connected'); 
+    console.log('database is connected'); 
  });
  
 //check database error
